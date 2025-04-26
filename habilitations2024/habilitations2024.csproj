@@ -54,6 +54,7 @@
     <Compile Include="controller\FrmHabilitationsController.cs" />
     <Compile Include="dal\Access.cs" />
     <Compile Include="dal\DeveloppeurAccess.cs" />
+    <Compile Include="dal\ProfilAccess.cs" />
     <Compile Include="model\Developpeur.cs" />
     <Compile Include="model\Profil.cs" />
     <Compile Include="view\FrmHabilitations.cs">
