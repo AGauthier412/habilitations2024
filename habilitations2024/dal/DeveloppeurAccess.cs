@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -142,6 +143,35 @@ namespace habilitations2024.dal
                     Environment.Exit(0);
                 }
             }
+        }
+
+        public bool ControleAuthentification(Admin admin)
+        {
+            if (access.Manager != null)
+            {
+                string req = "select * from developpeur d join profil p using idprofil";
+                req += "where d.nom=@nom and d.prenom=@prenom and pwd=SHA2(@pwd, 256) and p.nom='admin'";
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                parameters.Add("@nom", admin.Nom);
+                parameters.Add("@prenom", admin.Prenom);
+                parameters.Add("@pwd", admin.Pwd);
+                try
+                {
+                    List<Object[]> records = access.Manager.ReqSelect(req);
+                    if (records != null)
+                    {
+                        return (records.Count > 0);
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Environment.Exit(0);
+                }
+            }
+
+            return false;
         }
     }
 }

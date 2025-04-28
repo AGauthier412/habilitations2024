@@ -34,10 +34,6 @@ namespace habilitations2024.view
             Init();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
 
         // Création du controleur et remplissage des listes
         private void Init()
