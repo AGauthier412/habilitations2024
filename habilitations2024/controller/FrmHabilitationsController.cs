@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace habilitations2024.controller
 {
@@ -24,9 +25,9 @@ namespace habilitations2024.controller
         }
 
         // Récupère et retourne la liste des développeurs
-        public List<Developpeur> GetLesDeveloppeurs()
+        public List<Developpeur> GetLesDeveloppeurs(string filtre)
         {
-            return developpeurAccess.GetLesDeveloppeurs();
+            return developpeurAccess.GetLesDeveloppeurs(filtre);
         }
 
         // Récupère et retourne la liste des profils

@@ -53,6 +53,8 @@
             this.btnEnregPwd = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cboFiltre = new System.Windows.Forms.ComboBox();
             this.grbLesDeveloppeurs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeveloppeurs)).BeginInit();
             this.grbDeveloppeur.SuspendLayout();
@@ -61,6 +63,8 @@
             // 
             // grbLesDeveloppeurs
             // 
+            this.grbLesDeveloppeurs.Controls.Add(this.cboFiltre);
+            this.grbLesDeveloppeurs.Controls.Add(this.label8);
             this.grbLesDeveloppeurs.Controls.Add(this.btnDemandeChangePwd);
             this.grbLesDeveloppeurs.Controls.Add(this.btnDemandeSupprDev);
             this.grbLesDeveloppeurs.Controls.Add(this.btnDemandeModifDev);
@@ -299,6 +303,24 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "pwd";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(588, 242);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(26, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "filtre";
+            // 
+            // cboFiltre
+            // 
+            this.cboFiltre.FormattingEnabled = true;
+            this.cboFiltre.Location = new System.Drawing.Point(620, 239);
+            this.cboFiltre.Name = "cboFiltre";
+            this.cboFiltre.Size = new System.Drawing.Size(121, 21);
+            this.cboFiltre.TabIndex = 5;
+            this.cboFiltre.SelectedIndexChanged += new System.EventHandler(this.cboFiltre_SelectedIndexChanged);
+            // 
             // FrmHabilitations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -310,6 +332,7 @@
             this.Name = "FrmHabilitations";
             this.Text = "Habilitations";
             this.grbLesDeveloppeurs.ResumeLayout(false);
+            this.grbLesDeveloppeurs.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeveloppeurs)).EndInit();
             this.grbDeveloppeur.ResumeLayout(false);
             this.grbDeveloppeur.PerformLayout();
@@ -346,6 +369,8 @@
         private System.Windows.Forms.Button btnEnregPwd;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cboFiltre;
+        private System.Windows.Forms.Label label8;
     }
 }
 

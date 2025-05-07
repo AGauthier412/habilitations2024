@@ -34,11 +34,13 @@ namespace habilitations2024.view
             Init();
         }
 
-
         // Création du controleur et remplissage des listes
         private void Init()
         {
             controller = new FrmHabilitationsController();
+            cboFiltre.Items.Add("");
+            cboFiltre.SelectedIndex = 0;
+
             RemplirListeDeveloppeurs();
             RemplirListeProfils();
             EnCourseModifDeveloppeur(false);
@@ -48,7 +50,7 @@ namespace habilitations2024.view
         // Affiche les développeurs
         private void RemplirListeDeveloppeurs()
         {
-            List<Developpeur> lesDeveloppeurs = controller.GetLesDeveloppeurs();
+            List<Developpeur> lesDeveloppeurs = controller.GetLesDeveloppeurs((string)cboFiltre.SelectedItem);
             bdgDeveloppeurs.DataSource = lesDeveloppeurs;
             dgvDeveloppeurs.DataSource = bdgDeveloppeurs;
             dgvDeveloppeurs.Columns["iddeveloppeur"].Visible = false;
@@ -62,6 +64,10 @@ namespace habilitations2024.view
             List<Profil> lesProfils = controller.GetLesProfils();
             bdgProfils.DataSource = lesProfils;
             cboProfil.DataSource = bdgProfils;
+            foreach(Profil profil in lesProfils)
+            {
+                cboFiltre.Items.Add(profil.Nom);
+            }
         }
 
         // Demande de modification d'un développeur
@@ -203,6 +209,11 @@ namespace habilitations2024.view
             grbDeveloppeur.Enabled = !modif;
             txtPwd1.Text = "";
             txtPwd2.Text = "";
+        }
+
+        private void cboFiltre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RemplirListeDeveloppeurs();
         }
     }
 }

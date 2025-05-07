@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace habilitations2024.dal
 {
@@ -20,7 +21,7 @@ namespace habilitations2024.dal
         }
 
         // Récupère et retourne les développeurs
-        public List<Developpeur> GetLesDeveloppeurs()
+        public List<Developpeur> GetLesDeveloppeurs(string filtre)
         {
             List<Developpeur> lesDeveloppeurs = new List<Developpeur>();
             if (access.Manager != null)
@@ -38,7 +39,17 @@ namespace habilitations2024.dal
                             Profil profil = new Profil((int)record[5], (string)record[6]);
                             Developpeur developpeur = new Developpeur((int)record[0], (string)record[1], (string)record[2],
                                 (string)record[3], (string)record[4], profil);
-                            lesDeveloppeurs.Add(developpeur);
+                            if (filtre == "")
+                            {
+                                lesDeveloppeurs.Add(developpeur);
+                            }
+                            else
+                            {
+                                if (filtre == profil.Nom)
+                                {
+                                    lesDeveloppeurs.Add(developpeur);
+                                }
+                            }
                         }
                     }
                 }
